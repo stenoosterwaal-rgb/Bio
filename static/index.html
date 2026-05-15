@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VWO Biologie Tracker</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav>
+  <span class="brand">VWO Biologie Tracker</span>
+  <a href="/">Dashboard</a>
+  <a href="/exams.html">Examens</a>
+</nav>
+<main>
+  <h1>Dashboard</h1>
+
+  <div class="cards-row" id="summaryCards">
+    <div class="stat-card"><div class="label">Pogingen</div><div class="value" id="totalAttempts">—</div></div>
+    <div class="stat-card"><div class="label">Gemiddeld cijfer</div><div class="value" id="avgGrade">—</div></div>
+    <div class="stat-card"><div class="label">Sterkste onderwerp</div><div class="value" style="font-size:1rem;margin-top:.5rem" id="bestTopic">—</div></div>
+    <div class="stat-card"><div class="label">Zwakste onderwerp</div><div class="value" style="font-size:1rem;margin-top:.5rem" id="worstTopic">—</div></div>
+  </div>
+
+  <div class="card">
+    <h2>Cijferverloop</h2>
+    <canvas id="gradeChart" height="180"></canvas>
+    <p class="empty" id="noHistory" style="display:none">Nog geen voltooide pogingen.</p>
+  </div>
+
+  <div class="card">
+    <h2>Onderwerp beheersing</h2>
+    <div style="margin-bottom:.75rem;font-size:.82rem;color:var(--muted)">
+      <span style="background:var(--green);color:#fff;padding:.1rem .5rem;border-radius:3px;margin-right:.4rem">Beheerst ≥80%</span>
+      <span style="background:var(--orange);color:#fff;padding:.1rem .5rem;border-radius:3px;margin-right:.4rem">In ontwikkeling 55-79%</span>
+      <span style="background:var(--red);color:#fff;padding:.1rem .5rem;border-radius:3px;margin-right:.4rem">Aandacht nodig &lt;55%</span>
+      <span style="background:var(--grey);color:#fff;padding:.1rem .5rem;border-radius:3px">Nog niet gemaakt</span>
+    </div>
+    <div class="heatmap" id="heatmap"></div>
+  </div>
+
+  <div class="card">
+    <h2>Recente pogingen</h2>
+    <table>
+      <thead><tr><th>Examen</th><th>Datum</th><th>Punten</th><th>Cijfer</th><th></th></tr></thead>
+      <tbody id="attemptsBody"></tbody>
+    </table>
+    <p class="empty" id="noAttempts" style="display:none">Nog geen pogingen gedaan.</p>
+  </div>
+</main>
+<script type="module" src="/js/dashboard.js"></script>
+</body>
+</html>

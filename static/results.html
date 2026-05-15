@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resultaten — VWO Biologie Tracker</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .result-header { display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .answer-row td { vertical-align: top; padding: .75rem; }
+    .student-ans { font-size: .88rem; }
+    .official-ans { font-size: .82rem; color: var(--muted); }
+    .topic-section { margin-bottom: 1.5rem; }
+    .topic-section h3 { border-bottom: 2px solid var(--border); padding-bottom: .4rem; margin-bottom: .5rem; }
+  </style>
+</head>
+<body>
+<nav>
+  <span class="brand">VWO Biologie Tracker</span>
+  <a href="/">Dashboard</a>
+  <a href="/exams.html">Examens</a>
+</nav>
+<main>
+  <div id="header" class="result-header">
+    <div>
+      <div class="grade-big" id="gradeBig">—</div>
+      <div style="color:var(--muted);margin-top:.25rem" id="scoreLine">Laden…</div>
+    </div>
+    <div>
+      <div id="examTitleEl" style="font-size:1.1rem;font-weight:600"></div>
+      <a href="/" class="btn btn-secondary" style="margin-top:.75rem">← Dashboard</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Per vraag — gegroepeerd op onderwerp</h2>
+    <div id="resultsByTopic"></div>
+  </div>
+</main>
+<script type="module" src="/js/results.js"></script>
+</body>
+</html>

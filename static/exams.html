@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Examens — VWO Biologie Tracker</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav>
+  <span class="brand">VWO Biologie Tracker</span>
+  <a href="/">Dashboard</a>
+  <a href="/exams.html">Examens</a>
+</nav>
+<main>
+  <h1>Examens</h1>
+  <div id="flash"></div>
+
+  <div class="card">
+    <h2>Nieuw examen toevoegen</h2>
+    <form id="addExamForm">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div class="field">
+          <label>Titel</label>
+          <input name="title" placeholder="VWO Biologie CE 2024 Tijdvak 1" required>
+        </div>
+        <div class="field">
+          <label>Jaar</label>
+          <input name="year" type="number" value="2024" min="2010" max="2030" required>
+        </div>
+        <div class="field">
+          <label>Tijdvak</label>
+          <select name="timeframe">
+            <option value="1">Tijdvak 1</option>
+            <option value="2">Tijdvak 2</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Maximale score (punten)</label>
+          <input name="max_score" type="number" value="54" min="1" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Examen toevoegen</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Alle examens</h2>
+    <table>
+      <thead><tr><th>Titel</th><th>Jaar</th><th>Tijdvak</th><th>Max. score</th><th>Vragen</th><th></th></tr></thead>
+      <tbody id="examsBody"></tbody>
+    </table>
+    <p class="empty" id="noExams" style="display:none">Nog geen examens toegevoegd.</p>
+  </div>
+</main>
+<script type="module" src="/js/exams.js"></script>
+</body>
+</html>

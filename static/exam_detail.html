@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vragen beheren — VWO Biologie Tracker</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav>
+  <span class="brand">VWO Biologie Tracker</span>
+  <a href="/">Dashboard</a>
+  <a href="/exams.html">Examens</a>
+</nav>
+<main>
+  <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap">
+    <h1 id="examTitle" style="margin:0">Examen laden…</h1>
+    <button id="startBtn" class="btn btn-success" style="margin-left:auto">Examen starten</button>
+  </div>
+  <div id="flash"></div>
+
+  <div class="card">
+    <h2>Vraag toevoegen</h2>
+    <form id="addQuestionForm">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem">
+        <div class="field">
+          <label>Vraagnummer</label>
+          <input name="number" type="number" min="1" required>
+        </div>
+        <div class="field">
+          <label>Onderdeel (a/b/c of leeg)</label>
+          <input name="sub_number" placeholder="optioneel">
+        </div>
+        <div class="field">
+          <label>Max. punten</label>
+          <input name="max_points" type="number" min="1" value="1" required>
+        </div>
+        <div class="field">
+          <label>Syllabus-onderwerp</label>
+          <select name="topic_id" id="topicSelect">
+            <option value="">— kies onderwerp —</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Vraagtekst (optioneel)</label>
+        <textarea name="question_text" rows="2" placeholder="Kopieer hier de vraagstelling…"></textarea>
+      </div>
+      <div class="field">
+        <label>Officieel antwoord (uit antwoordmodel)</label>
+        <textarea name="official_answer" rows="4" placeholder="Kopieer het officiële antwoord hier…" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Vraag toevoegen</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Vragen</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nr</th><th>Onderdeel</th><th>Punten</th><th>Onderwerp</th>
+          <th>Officieel antwoord</th><th></th>
+        </tr>
+      </thead>
+      <tbody id="questionsBody"></tbody>
+    </table>
+    <p class="empty" id="noQuestions" style="display:none">Nog geen vragen toegevoegd.</p>
+  </div>
+</main>
+<script type="module" src="/js/exam_detail.js"></script>
+</body>
+</html>
