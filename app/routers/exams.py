@@ -1,3 +1,4 @@
+from typing import List
 from fastapi import APIRouter, HTTPException
 from app.database import get_db
 from app.models import CreateExam, ExamOut, ExamDetailOut, QuestionOut, CreateQuestion, UpdateQuestion
@@ -5,7 +6,7 @@ from app.models import CreateExam, ExamOut, ExamDetailOut, QuestionOut, CreateQu
 router = APIRouter()
 
 
-@router.get("/", response_model=list[ExamOut])
+@router.get("/", response_model=List[ExamOut])
 def list_exams():
     db = get_db()
     rows = db.execute(
@@ -55,7 +56,7 @@ def delete_exam(exam_id: int):
     db.commit()
 
 
-@router.get("/{exam_id}/questions", response_model=list[QuestionOut])
+@router.get("/{exam_id}/questions", response_model=List[QuestionOut])
 def list_questions(exam_id: int):
     db = get_db()
     rows = db.execute(
@@ -92,7 +93,7 @@ def update_question(exam_id: int, question_id: int, body: UpdateQuestion):
     q = db.execute("SELECT * FROM questions WHERE id = ? AND exam_id = ?", (question_id, exam_id)).fetchone()
     if not q:
         raise HTTPException(404, "Vraag niet gevonden")
-    updates = {k: v for k, v in body.model_dump().items() if v is not None}
+    updates = {k: v for k, v in body.dict().items() if v is not None}
     if updates:
         cols = ", ".join(f"{k} = ?" for k in updates)
         db.execute(f"UPDATE questions SET {cols} WHERE id = ?", (*updates.values(), question_id))

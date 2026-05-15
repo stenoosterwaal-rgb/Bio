@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+from typing import List
 from fastapi import APIRouter, HTTPException
 from app.database import get_db
 from app.models import StartAttempt, SubmitAttempt, AttemptResult, AttemptOut, GradedAnswer
@@ -19,7 +20,7 @@ def start_attempt(body: StartAttempt):
     return {"attempt_id": cur.lastrowid}
 
 
-@router.get("/", response_model=list[AttemptOut])
+@router.get("/", response_model=List[AttemptOut])
 def list_attempts():
     db = get_db()
     rows = db.execute(

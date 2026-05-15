@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import List, Optional
 
 
 class TopicOut(BaseModel):
@@ -61,7 +61,7 @@ class ExamDetailOut(BaseModel):
     timeframe: int
     max_score: int
     created_at: str
-    questions: list[QuestionOut]
+    questions: List[QuestionOut]
 
 
 class StartAttempt(BaseModel):
@@ -74,7 +74,7 @@ class AnswerInput(BaseModel):
 
 
 class SubmitAttempt(BaseModel):
-    answers: list[AnswerInput]
+    answers: List[AnswerInput]
 
 
 class GradedAnswer(BaseModel):
@@ -97,7 +97,7 @@ class AttemptResult(BaseModel):
     raw_score: int
     max_score: int
     grade: float
-    answers: list[GradedAnswer]
+    answers: List[GradedAnswer]
 
 
 class AttemptOut(BaseModel):
